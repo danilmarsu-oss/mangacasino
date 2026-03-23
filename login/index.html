@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="fi-FI">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Kirjaudumme Manga Casino -tilille nopeasti ja turvallisesti. Tutustumme sisäänkirjautumiseen, salasanan palautukseen, mobiilikäyttöön, tukeen ja vastuulliseen pelaamiseen." />
+  <title>Manga Casino kirjautuminen – turvallinen sisäänkirjautuminen ja tilin hallinta</title>
+  <link rel="icon" type="image/png" href="../favicon%20%2835%29.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+
+    :root {
+      --bg-main: #fafafa;
+      --bg-dark: #181818;
+      --accent: #07fcfa;
+      --white: #fefefe;
+      --muted: #d6d6d6;
+      --card: #ffffff;
+      --shadow: 0 16px 45px rgba(0, 0, 0, 0.1);
+      --radius: 18px;
+      --sidebar-width: 280px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg-main);
+      color: var(--bg-dark);
+      font-family: "Space Grotesk", sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      z-index: -2;
+      border-radius: 50%;
+      filter: blur(2px);
+    }
+
+    body::before {
+      width: 480px;
+      height: 480px;
+      top: -180px;
+      right: -140px;
+      background: radial-gradient(circle, rgba(7, 252, 250, 0.24) 0%, rgba(7, 252, 250, 0) 72%);
+    }
+
+    body::after {
+      width: 420px;
+      height: 420px;
+      bottom: 160px;
+      left: -180px;
+      background: radial-gradient(circle, rgba(24, 24, 24, 0.08) 0%, rgba(24, 24, 24, 0) 74%);
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: var(--sidebar-width);
+      background: var(--bg-dark);
+      color: var(--white);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 24px 20px;
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
+      z-index: 10;
+    }
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .logo-wrap img {
+      width: 54px;
+      height: 54px;
+      border-radius: 12px;
+      object-fit: cover;
+      background: #222;
+    }
+
+    .logo-wrap span {
+      font-family: "Exo 2", sans-serif;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+
+    .main-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 26px;
+    }
+
+    .main-nav a {
+      display: block;
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.04);
+      transition: 0.22s ease;
+    }
+
+    .main-nav a:hover {
+      background: rgba(7, 252, 250, 0.18);
+      color: var(--accent);
+      transform: translateX(2px);
+    }
+
+    .auth {
+      display: grid;
+      gap: 10px;
+    }
+
+    .auth button,
+    .auth .auth-btn {
+      border: none;
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-weight: 700;
+      font-family: "Exo 2", sans-serif;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .auth .auth-btn {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .auth .register {
+      background: var(--accent);
+      color: #002323;
+    }
+
+    .auth .login {
+      background: var(--white);
+      color: #111;
+    }
+
+    .auth button:hover,
+    .auth .auth-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    .content {
+      margin-left: var(--sidebar-width);
+      padding: 36px clamp(16px, 3vw, 44px) 0;
+    }
+
+    .container {
+      max-width: 1220px;
+      margin: 0 auto;
+    }
+
+    .homepage-content {
+      background: #fff;
+      border-radius: 20px;
+      border: 1px solid rgba(24, 24, 24, 0.1);
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.06);
+      padding: clamp(18px, 3vw, 34px);
+      line-height: 1.72;
+    }
+
+    .homepage-content > p:first-child {
+      margin-top: 0;
+      font-size: 1.07rem;
+    }
+
+    .homepage-content h2,
+    .homepage-content h3 {
+      font-family: "Exo 2", sans-serif;
+      margin-bottom: 10px;
+      line-height: 1.3;
+      color: #111;
+    }
+
+    .homepage-content h2 {
+      margin-top: 28px;
+      font-size: clamp(1.4rem, 2.3vw, 2rem);
+    }
+
+    .homepage-content h3 {
+      margin-top: 18px;
+      font-size: clamp(1.15rem, 2vw, 1.45rem);
+    }
+
+    .homepage-content p {
+      margin: 0 0 14px;
+      color: #222;
+    }
+
+    .homepage-content ul,
+    .homepage-content ol {
+      margin: 8px 0 18px;
+      padding-left: 1.35rem;
+    }
+
+    .homepage-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0 22px;
+      overflow: hidden;
+      border-radius: 12px;
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+      border: 1px solid rgba(24, 24, 24, 0.14);
+    }
+
+    .homepage-content th,
+    .homepage-content td {
+      border: 1px solid rgba(24, 24, 24, 0.14);
+      padding: 10px 12px;
+      text-align: left;
+      white-space: normal;
+    }
+
+    .homepage-content th {
+      background: rgba(7, 252, 250, 0.24);
+    }
+
+    .inline-image {
+      margin: 10px 0 16px;
+    }
+
+    .inline-image img {
+      width: 100%;
+      border-radius: 14px;
+      object-fit: cover;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(24, 24, 24, 0.08);
+    }
+
+    .homepage-content .review,
+    .homepage-content .faq {
+      background: #f7f7f7;
+      border: 1px solid rgba(24, 24, 24, 0.1);
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 10px;
+    }
+
+    .homepage-content .review p:last-child,
+    .homepage-content .faq p:last-child {
+      margin-bottom: 0;
+    }
+
+    .form-card {
+      background: #f7f7f7;
+      border: 1px solid rgba(24, 24, 24, 0.14);
+      border-radius: 14px;
+      padding: 16px;
+      margin: 14px 0 24px;
+    }
+
+    .form-card h2 {
+      margin: 0 0 12px;
+      font-size: 1.2rem;
+    }
+
+    .form-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .form-field label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      width: 100%;
+      border: 1px solid rgba(24, 24, 24, 0.25);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font: inherit;
+      background: #fff;
+    }
+
+    .form-field textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .form-check {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.94rem;
+    }
+
+    .form-submit {
+      border: none;
+      background: var(--accent);
+      color: #003737;
+      border-radius: 10px;
+      padding: 11px 16px;
+      font-weight: 800;
+      cursor: pointer;
+      font-family: "Exo 2", sans-serif;
+      transition: 0.2s ease;
+    }
+
+    .form-submit:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+    }
+
+    .form-note {
+      margin-top: 10px;
+      margin-bottom: 0;
+      font-size: 0.94rem;
+    }
+
+    .form-note a {
+      color: #0a7a79;
+      font-weight: 700;
+    }
+
+    section {
+      margin-bottom: 54px;
+    }
+
+    .hero {
+      display: grid;
+      gap: 18px;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-family: "Exo 2", sans-serif;
+      font-size: clamp(2.2rem, 4vw, 3.8rem);
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .hero-banner {
+      width: 100%;
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      object-fit: cover;
+      max-height: 500px;
+    }
+
+    .cta-wrap {
+      display: flex;
+      justify-content: center;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--accent);
+      color: #003737;
+      border: none;
+      border-radius: 999px;
+      padding: 16px 38px;
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      cursor: pointer;
+      animation: pulse 1.5s infinite;
+      box-shadow: 0 0 0 0 rgba(7, 252, 250, 0.8);
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(7, 252, 250, 0.6);
+      }
+      70% {
+        transform: scale(1.04);
+        box-shadow: 0 0 0 18px rgba(7, 252, 250, 0);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(7, 252, 250, 0);
+      }
+    }
+
+    .section-title {
+      margin: 0 0 16px;
+      font-family: "Exo 2", sans-serif;
+      font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .game-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.09);
+      aspect-ratio: 1 / 1;
+      border: 1px solid rgba(24, 24, 24, 0.08);
+      transition: transform 0.22s ease;
+    }
+
+    .game-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .game-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .seo-block {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: clamp(18px, 3vw, 28px);
+      border: 1px solid rgba(24, 24, 24, 0.09);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+    }
+
+    .seo-block h2,
+    .seo-block h3 {
+      font-family: "Exo 2", sans-serif;
+      margin-top: 0;
+    }
+
+    .seo-block ul,
+    .seo-block ol {
+      padding-left: 1.2rem;
+      line-height: 1.7;
+    }
+
+    .seo-block table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+      font-size: 0.96rem;
+    }
+
+    .seo-block th,
+    .seo-block td {
+      border: 1px solid rgba(24, 24, 24, 0.14);
+      padding: 10px;
+      text-align: left;
+    }
+
+    .seo-block th {
+      background: rgba(7, 252, 250, 0.2);
+    }
+
+    .logo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 14px;
+    }
+
+    .logo-item {
+      background: #fff;
+      border: 1px solid rgba(24, 24, 24, 0.12);
+      border-radius: 14px;
+      min-height: 90px;
+      padding: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .logo-item img {
+      max-width: 100%;
+      max-height: 56px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .reviews {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .review-card {
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid rgba(24, 24, 24, 0.1);
+      padding: 18px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .review-card h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-family: "Exo 2", sans-serif;
+    }
+
+    .review-card p {
+      margin: 0;
+      color: #2d2d2d;
+      line-height: 1.6;
+    }
+
+    .faq details {
+      background: #fff;
+      border: 1px solid rgba(24, 24, 24, 0.12);
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin-bottom: 10px;
+    }
+
+    .faq summary {
+      cursor: pointer;
+      font-weight: 700;
+      font-family: "Exo 2", sans-serif;
+    }
+
+    .faq p {
+      margin-bottom: 2px;
+      margin-top: 10px;
+      line-height: 1.6;
+    }
+
+    .page-updated {
+      margin-left: var(--sidebar-width);
+      background: #ececec;
+      color: #1f1f1f;
+      font-weight: 600;
+      padding: 13px 20px;
+      border-top: 1px solid rgba(24, 24, 24, 0.12);
+      border-bottom: 1px solid rgba(24, 24, 24, 0.1);
+      text-align: center;
+    }
+
+    footer {
+      margin-left: var(--sidebar-width);
+      background: var(--bg-dark);
+      color: var(--white);
+      padding: 34px clamp(16px, 3vw, 36px) 26px;
+    }
+
+    .footer-wrap {
+      max-width: 1220px;
+      margin: 0 auto;
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .trust-badge {
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      min-height: 78px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      text-decoration: none;
+      color: var(--white);
+      font-weight: 700;
+      text-align: center;
+      transition: 0.2s ease;
+    }
+
+    .trust-badge:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .trust-badge img {
+      max-width: 100%;
+      max-height: 44px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 22px;
+      margin: 16px 0 22px;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    .providers-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .provider {
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 10px;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.03);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 64px;
+    }
+
+    .provider img {
+      max-width: 100%;
+      max-height: 36px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .copyright {
+      margin: 0;
+      color: #bbbbbb;
+      font-size: 0.92rem;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 14px;
+    }
+
+    @media (max-width: 1200px) {
+      .games-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .providers-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .trust-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 960px) {
+      :root {
+        --sidebar-width: 100%;
+      }
+
+      .sidebar {
+        position: static;
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      }
+
+      .content,
+      .page-updated,
+      footer {
+        margin-left: 0;
+      }
+
+      .reviews {
+        grid-template-columns: 1fr;
+      }
+
+      .games-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 680px) {
+      .games-grid,
+      .providers-grid,
+      .trust-grid,
+      .logo-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .cta-btn {
+        width: 100%;
+        max-width: 340px;
+      }
+    }
+  
+  </style>
+</head>
+<body>
+  <header class="sidebar">
+    <div>
+      <a class="logo-wrap" href="../index.html" style="text-decoration:none;color:inherit;">
+        <img src="../manga%20casino.png" alt="Manga Casino logo" />
+        <span>Manga<br />Casino</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="../login/">Login</a>
+        <a href="../bonus-policy/">Bonus</a>
+        <a href="../app/">App 2</a>
+      </nav>
+    </div>
+
+    <div class="auth" aria-label="Account actions">
+      <a class="auth-btn register" href="/go/">Rekisteröidy</a>
+      <a class="auth-btn login" href="../login/">Kirjaudu</a>
+    </div>
+  </header>
+
+  <main class="content">
+    <div class="container">
+      <article class="homepage-content">
+<h1>Manga Casino kirjautuminen</h1>
+<form class="form-card login-form" action="#" method="post" autocomplete="on">
+  <h2>Kirjaudu tilille</h2>
+  <div class="form-grid">
+    <div class="form-field">
+      <label for="login-email">Sähköposti</label>
+      <input id="login-email" name="email" type="email" placeholder="name@email.com" required />
+    </div>
+    <div class="form-field">
+      <label for="login-password">Salasana</label>
+      <input id="login-password" name="password" type="password" placeholder="••••••••" required />
+    </div>
+    <label class="form-check" for="remember-me">
+      <input id="remember-me" name="remember" type="checkbox" />
+      Muista minut tällä laitteella
+    </label>
+    <button class="form-submit" type="submit">Kirjaudu</button>
+    <p class="form-note">Unohtuiko salasana? <a href="#">Palauta salasana</a></p>
+  </div>
+</form>
+<p>Me kirjaudumme tilille nopeasti, turvallisesti ja ilman turhia vaiheita, kun käytämme selkeää ja modernia sisäänkirjautumissivua. Manga Casino tarjoaa meille sujuvan tavan siirtyä peleihin, maksuihin, bonuksiin ja omaan pelihistoriaan yhdestä paikasta. Me arvostamme sitä, että kirjautuminen toimii yhtä hyvin tietokoneella, tabletilla ja puhelimella, sillä näin pääsemme omalle tilillemme silloin kun meille parhaiten sopii. Meille tärkeää on myös se, että tilin käyttö tuntuu turvalliselta jokaisella käyntikerralla. Siksi sivusto hyödyntää ajantasaisia suojausratkaisuja, selkeitä vahvistusvaiheita ja helppokäyttöisiä palautusmenetelmiä tilanteissa, joissa salasana unohtuu tai kirjautuminen ei onnistu heti. Meidän ei tarvitse käyttää aikaa monimutkaiseen navigointiin, koska kaikki olennaiset toiminnot löytyvät nopeasti sisäänkirjautumisen jälkeen. Kun kirjaudumme sisään, me voimme tarkistaa saldon, avata suosikkipelimme, käyttää kampanjoita ja hallita tilimme asetuksia luotettavasti. Näin kirjautumissivu toimii meille tärkeänä porttina koko pelikokemukseen.</p>
+
+<h2>Turvallinen kirjautuminen Manga Casino -tilille</h2>
+<p>Me pidämme turvallisuutta kirjautumisen tärkeimpänä osana, sillä tilillämme on henkilökohtaisia tietoja, maksutapoihin liittyviä asetuksia ja pelihistoriaa. Manga Casino rakentaa sisäänkirjautumisen niin, että voimme tunnistautua turvallisesti ilman, että käyttökokemus muuttuu raskaaksi tai hitaaksi. Me syötämme yleensä sähköpostiosoitteen tai käyttäjätunnuksen sekä salasanan, minkä jälkeen järjestelmä tarkistaa tiedot nopeasti. Joissain tilanteissa me voimme vahvistaa sisäänkirjautumisen lisävaiheella, mikä lisää suojaa etenkin uusilla laitteilla tai poikkeuksellisissa kirjautumisyrityksissä.</p>
+<p>Me hyödymme siitä, että suojattu yhteys pitää kirjautumistiedot turvassa siirron aikana. Lisäksi me voimme itse vahvistaa turvallisuutta käyttämällä vahvaa salasanaa, säilyttämällä kirjautumistiedot vain omassa käytössämme ja välttämällä kirjautumista epäluotettavissa verkoissa. Meille tämä tarkoittaa ennen kaikkea mielenrauhaa. Kun tiedämme, että tili on suojattu hyvin, voimme keskittyä olennaiseen eli sivuston käyttöön, pelien avaamiseen ja tilin hallintaan. Turvallinen kirjautuminen ei ole vain tekninen yksityiskohta, vaan olennainen osa toimivaa ja luotettavaa pelikokemusta.</p>
+
+<h2>Näin kirjaudumme sisään ja aloitamme</h2>
+<p>Me aloitamme kirjautumisen yleensä etusivulta tai sivuston oikeasta yläkulmasta löytyvän painikkeen kautta. Sisäänkirjautumissivu avautuu nopeasti, ja sen rakenne on suunniteltu mahdollisimman selkeäksi. Me syötämme rekisteröinnissä käyttämämme sähköpostiosoitteen tai käyttäjätunnuksen sekä salasanan, minkä jälkeen vahvistamme tiedot. Kun kirjautuminen onnistuu, pääsemme suoraan omalle tilillemme, josta löytyvät pelit, bonukset, maksutavat, profiilitiedot ja mahdolliset ilmoitukset.</p>
+<p>Me arvostamme sitä, että kirjautumisen jälkeen palvelu ohjaa meidät luonnollisesti eteenpäin. Jos tavoitteenamme on tallettaa, siirrymme kassalle. Jos taas haluamme jatkaa pelaamista, avaamme suosikkipelimme muutamalla painalluksella. Casino manga -ympäristössä kirjautumisen tarkoitus ei ole vain avata tiliä, vaan helpottaa kaikkea sivuston käyttöä. Siksi nopea pääsy omiin tietoihin, kampanjoihin ja pelihistoriaan tekee kokemuksesta huomattavasti miellyttävämmän. Mitä sujuvampi sisäänkirjautuminen on, sitä helpompi meidän on käyttää sivustoa juuri omalla tavallamme.</p>
+
+<h2>Mitä löydämme kirjautumisen jälkeen</h2>
+<p>Me pääsemme sisäänkirjautumisen jälkeen hallitsemaan koko tiliämme yhdestä näkymästä. Tämä on meille tärkeää, koska haluamme nähdä nopeasti saldon, aktiiviset bonukset, viimeisimmät tapahtumat sekä mahdolliset vahvistuspyynnöt. Manga Casino kokoaa olennaiset tiedot loogisesti yhteen paikkaan, jotta meidän ei tarvitse etsiä toimintoja eri alasivuilta. Näin tilin käyttö tuntuu tehokkaalta myös silloin, kun käytämme sivustoa lyhyesti mobiilissa tai pidempään tietokoneella.</p>
+<p>Me voimme tarkistaa omat henkilötietomme, siirtyä talletukseen, aloittaa kotiutuksen, tarkastella pelihistoriaa ja löytää asiakastuen yhteystiedot nopeasti. Samalla me näemme, onko käytössämme avoimia kampanjoita tai bonusetuja, joita voimme hyödyntää seuraavassa pelisessiossa. Meille kirjautumisen jälkeinen näkymä on paljon enemmän kuin pelkkä käyttäjäprofiili. Se on keskus, josta hallitsemme koko kokemusta turvallisesti ja selkeästi. Kun kaikki on helposti saatavilla, meidän on helpompi tehdä päätöksiä, pelata vastuullisesti ja pitää kokonaisuus omassa hallinnassamme.</p>
+
+<h2>Jos salasana unohtuu</h2>
+<p>Me kohtaamme välillä tilanteita, joissa salasana ei tule mieleen tai kirjautuminen epäonnistuu ensimmäisellä yrittämällä. Tällöin tärkeintä on, että palautusprosessi toimii selkeästi ja turvallisesti. Manga Casino tarjoaa meille unohtuneen salasanan palautustoiminnon, jonka avulla voimme luoda uuden salasanan ilman monimutkaisia vaiheita. Me avaamme kirjautumissivulta palautuslinkin, syötämme rekisteröityyn tiliin liitetyn sähköpostiosoitteen ja seuraamme ohjeita, jotka lähetetään meille sähköpostitse.</p>
+<p>Me hyödymme siitä, että prosessi on rakennettu turvallisuuden ehdoilla. Palautuslinkki vahvistaa, että juuri meillä on pääsy tilin yhteydessä käytettyyn sähköpostiin. Kun luomme uuden salasanan, meidän kannattaa valita yhdistelmä, joka on riittävän vahva ja erilainen kuin muissa palveluissa käyttämämme tunnukset. Joskus ongelma ei liity unohtuneeseen salasanaan, vaan kirjoitusvirheeseen tai vanhentuneisiin tallennettuihin tietoihin selaimessa. Silloinkin me voimme ratkaista tilanteen nopeasti tarkistamalla tiedot huolellisesti ja käyttämällä palautustoimintoa tarvittaessa. Näin pääsemme takaisin tilillemme turvallisesti ja ilman turhaa stressiä.</p>
+
+<h2>Yleisimmät kirjautumisongelmat ja ratkaisut</h2>
+<p>Me voimme törmätä muutamiin tavallisiin ongelmiin, vaikka sisäänkirjautuminen olisi pääosin sujuvaa. Yleisin syy on virheellinen salasana tai sähköpostiosoite. Tämän vuoksi meidän kannattaa tarkistaa, että kirjoitamme tiedot täsmälleen oikein ja että isot ja pienet kirjaimet ovat oikein, jos salasana niitä käyttää. Joskus selain täyttää vanhat tiedot automaattisesti, mikä voi estää kirjautumisen. Tällöin me voimme kirjoittaa tiedot käsin ja yrittää uudelleen.</p>
+<p>Toinen tavallinen tilanne liittyy verkkoyhteyteen tai selaimen välimuistiin. Jos sivu ei lataudu kunnolla tai kirjautumispainike ei reagoi, me voimme päivittää sivun, tyhjentää selaimen välimuistin tai kokeilla toista selainta. Mobiilissa soveltuu sama periaate: selain kannattaa sulkea ja avata uudelleen tai vaihtaa verkkoyhteyttä. Jos tilillämme on vahvistamattomia tietoja tai turvajärjestelmä havaitsee poikkeuksellisen kirjautumisen, saatamme nähdä lisävahvistuspyynnön. Se ei ole ongelma, vaan suojaava toimenpide. Kun seuraamme ohjeita rauhallisesti, pääsemme yleensä jatkamaan nopeasti. Jos kirjautuminen ei näistä toimista huolimatta onnistu, asiakastuki auttaa meitä selvittämään tilanteen turvallisesti.</p>
+
+<h2>Mobiilikirjautuminen ja käyttö eri laitteilla</h2>
+<p>Me käytämme kirjautumissivua usein mobiililaitteella, joten toimivuus puhelimessa ja tabletissa on meille tärkeä osa kokonaisuutta. Manga Casino on suunniteltu toimimaan selaimessa ilman erillistä latausta, mikä tekee sisäänkirjautumisesta nopeaa myös liikkeellä ollessa. Me avaamme sivuston, siirrymme kirjautumiseen ja syötämme tietomme aivan samalla tavalla kuin tietokoneella. Valikot ovat kevyitä, painikkeet selkeitä ja kentät helposti täytettäviä pienemmälläkin näytöllä.</p>
+<p>Me hyödymme erityisesti siitä, että samat tilitoiminnot ovat käytettävissä kaikilla laitteilla. Voimme tarkistaa bonusetumme aamulla puhelimella, tehdä talletuksen tabletilla ja jatkaa pelaamista myöhemmin tietokoneella ilman, että tilin käyttö muuttuu epäselväksi. Casino manga -kokemus pysyy yhtenäisenä, vaikka vaihtaisimme laitetta kesken päivän. Tämä joustavuus tekee palvelusta meille käytännöllisen, sillä kirjautuminen ei sido meitä yhteen ympäristöön. Kun mobiilikäyttö toimii hyvin, voimme hallita tiliämme helposti missä tahansa.</p>
+
+<h2>Tilin suojaaminen omilla valinnoillamme</h2>
+<p>Me voimme itse vaikuttaa paljon siihen, kuinka turvallisena tilimme pysyy. Ensimmäinen askel on vahva salasana, jossa yhdistyvät kirjaimet, numerot ja tarvittaessa erikoismerkit. Meidän kannattaa välttää helposti arvattavia sanoja, syntymävuosia tai samoja tunnuksia, joita käytämme muualla. Turvallinen salasana vähentää riskiä ja suojaa tiliämme pitkällä aikavälillä. Lisäksi meidän kannattaa kirjautua ulos etenkin jaetuilla laitteilla ja välttää kirjautumistietojen tallentamista julkisissa ympäristöissä.</p>
+<p>Me voimme myös seurata tilin toimintaa säännöllisesti. Jos huomaamme epätavallisia kirjautumisia, muutoksia tietoihin tai outoja tapahtumia pelihistoriassa, meidän on hyvä vaihtaa salasana heti ja ottaa yhteyttä tukeen. Meidän ei tarvitse odottaa ongelman kasvamista, vaan nopea reagointi auttaa pitämään tilanteen hallinnassa. Kun yhdistämme sivuston tarjoamat suojausratkaisut omiin hyviin käytäntöihimme, kirjautuminen pysyy turvallisena ja luotettavana. Näin me rakennamme meille sopivan tavan käyttää palvelua vastuullisesti ja huoletta.</p>
+
+<h2>Vastuullinen pelaaminen kirjautumisen jälkeen</h2>
+<p>Meille kirjautuminen ei tarkoita vain pääsyä peleihin, vaan myös mahdollisuutta hallita omaa pelaamistamme paremmin. Kun olemme tilillämme, voimme tarkistaa talletushistorian, seurata omaa aktiivisuuttamme ja hyödyntää vastuullisen pelaamisen asetuksia. Manga Casino auttaa meitä pitämään kokonaisuuden hallittuna tarjoamalla työkaluja, joiden avulla voimme asettaa omia rajoja ja seurata omaa käyttöämme selkeästi.</p>
+<p>Me voimme käyttää aikarajoja, talletusrajoja tai muita hallintatyökaluja silloin, kun haluamme pitää pelaamisen viihteenä ja selkeissä rajoissa. Tämä on meille hyödyllistä etenkin silloin, kun käytämme sivustoa säännöllisesti. Kun vastuullisen pelaamisen työkalut löytyvät helposti kirjautumisen jälkeen, niiden käyttäminen on luonteva osa palvelua eikä erillinen lisätoiminto. Näin me voimme yhdistää sujuvan tilinkäytön, turvallisen kirjautumisen ja fiksun oman hallinnan yhdeksi kokonaisuudeksi.</p>
+
+<h2>Asiakastuki kirjautumiseen liittyvissä tilanteissa</h2>
+<p>Me tarvitsemme joskus apua esimerkiksi silloin, kun salasana ei palaudu, vahvistusviesti viivästyy tai tili lukittuu usean epäonnistuneen yrityksen jälkeen. Silloin asiakastuen merkitys korostuu. Me arvostamme tukea, joka vastaa nopeasti ja selkeästi sekä ohjaa meitä askel askeleelta eteenpäin. Kun kirjautumiseen liittyvä ongelma ratkeaa ilman turhaa odottelua, koko palvelun käyttö tuntuu luotettavammalta.</p>
+<p>Me voimme yleensä saada apua live chatin, sähköpostin tai usein kysyttyjen kysymysten kautta. Tuki auttaa meitä turvallisesti, joten tilin palauttamisessa voidaan pyytää lisävahvistuksia henkilöllisyyden suojaamiseksi. Tämä on meille hyvä asia, koska se osoittaa, että tiliä ei avata kenelle tahansa ilman tarkistuksia. Kun saamme oikeat ohjeet nopeasti, palaamme tilillemme helpommin ja voimme jatkaa sivuston käyttöä ilman pitkiä keskeytyksiä.</p>
+
+<h2>Miksi kirjautumissivu on tärkeä osa kokemusta</h2>
+<p>Me näemme kirjautumissivun usein vain käytännöllisenä porttina, mutta todellisuudessa se vaikuttaa vahvasti koko käyttökokemukseen. Hyvin rakennettu sisäänkirjautuminen tekee palvelusta turvallisen, selkeän ja nopeasti lähestyttävän. Meille tämä tarkoittaa sitä, että pääsemme helposti omalle tilillemme, löydämme tarvitsemaamme tiedot ja voimme hallita pelaamista yhdestä paikasta. Kun kirjautuminen toimii luotettavasti, myös koko sivusto tuntuu laadukkaammalta.</p>
+<p>Manga Casino rakentaa kirjautumisen ympärille kokonaisuuden, jossa turvallisuus, nopeus ja helppokäyttöisyys tukevat toisiaan. Me hyödymme siitä joka kerta, kun palaamme sivustolle. Olipa tavoitteenamme pelata, käyttää bonus, tarkistaa saldo tai hallita asetuksia, kaikki alkaa onnistuneesta kirjautumisesta. Siksi toimiva login-sivu ei ole vain tekninen yksityiskohta, vaan olennainen osa kokonaisuutta, joka tekee palvelusta meille miellyttävän ja luotettavan käyttää.</p>
+
+
+
+      </article>
+    </div>
+  </main>
+
+  <div class="page-updated">Sivu päivitetty: <span id="updated-date">23.03.2026</span></div>
+
+  <footer>
+    <div class="footer-wrap">
+      <div class="trust-grid">
+        <a class="trust-badge" href="https://www.gamstop.co.uk/" target="_blank" rel="noopener noreferrer">
+          <img src="../trust%20badges/gamstop.png" alt="GamStop" />
+        </a>
+        <a class="trust-badge" href="https://www.gamcare.org.uk/" target="_blank" rel="noopener noreferrer">
+          <img src="../trust%20badges/GamCare.png" alt="GamCare" />
+        </a>
+        <a class="trust-badge" href="https://www.begambleaware.org/" target="_blank" rel="noopener noreferrer">
+          <img src="../trust%20badges/gambleaware.png" alt="BeGambleAware" />
+        </a>
+        <a class="trust-badge" href="https://www.egba.eu/" target="_blank" rel="noopener noreferrer">EGBA</a>
+        <a class="trust-badge" href="https://www.gamblingcommission.gov.uk/" target="_blank" rel="noopener noreferrer">UK Gambling Commission</a>
+      </div>
+
+      <nav class="footer-links" aria-label="Footer links">
+        <a href="../about-us/">About Us</a>
+        <a href="../contact-us/">Contact Us</a>
+        <a href="../bonus-policy/">Bonus Policy</a>
+        <a href="../privacy-policy/">Privacy Policy</a>
+        <a href="../responsible-gambling/">Responsible Gambling</a>
+      </nav>
+
+      <div class="providers-grid" aria-label="Game providers">
+        <div class="provider"><img src="../providers/evolution.png" alt="Evolution" /></div>
+        <div class="provider"><img src="../providers/pragmatic-play.png" alt="Pragmatic Play" /></div>
+        <div class="provider"><img src="../providers/pragmatic-play-logo-png.png" alt="Pragmatic Play Logo" /></div>
+        <div class="provider"><img src="../providers/netentlogo.png" alt="NetEnt" /></div>
+        <div class="provider"><img src="../providers/playn-go-logo.png" alt="Play'n GO" /></div>
+        <div class="provider"><img src="../providers/playngo.webp" alt="Play'n GO Alternate" /></div>
+        <div class="provider"><img src="../providers/microgaming-logo.png" alt="Microgaming" /></div>
+        <div class="provider"><img src="../providers/quickspin.png" alt="Quickspin" /></div>
+        <div class="provider"><img src="../providers/Games-Global.svg" alt="Games Global" /></div>
+        <div class="provider"><img src="../providers/Yggdrasil%20Gaming_Logo_1.png" alt="Yggdrasil Gaming" /></div>
+        <div class="provider"><img src="../providers/nolimit%20city.png" alt="Nolimit City" /></div>
+      </div>
+
+      <p class="copyright">2026 Copyright Manga Casino. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function updateDate() {
+      var dateNode = document.getElementById("updated-date");
+      if (!dateNode) return;
+      var now = new Date();
+      dateNode.textContent = now.toLocaleDateString("fi-FI");
+    })();
+  </script>
+</body>
+</html>
